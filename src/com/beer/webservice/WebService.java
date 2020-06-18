@@ -6,12 +6,15 @@ public class WebService {
 
 	public static void main(String[] args) {
 		int PORT = 3001;
-		String URL = "http://localhost:" + PORT + "/beerservice";
-		BeerWebService beerWebService = new BeerWebService();
-
-		System.out.println("Servindo no endereço: " + URL);
+		String URL = "http://localhost:" + PORT;
 		
-		Endpoint.publish(URL, beerWebService);
+		BeerWebService beerWebService = new BeerWebService();
+		UserWebService userWebService = new UserWebService();
+
+		Endpoint.publish(URL + "/beerservice", beerWebService);
+		Endpoint.publish(URL + "/userservice", userWebService);
+		
+		System.out.println("Servindo no endereço: " + URL);
 	}
 
 }
